@@ -66,7 +66,7 @@ async function showUserlist() {
         console.log(response.statusText);
         let namen = "";
         response.json().then(js => {
-            for (let i = 0; i < js.length - 1; i++) {
+            for (let i = 0; i < js.length; i++) {
                 //namen + fname + " " + lname + NEWLINE
                 namen = namen + js[i].fname + " " + js[i].lname + "<br/>";
             }
