@@ -15,7 +15,7 @@ export namespace P_3_1Server {
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(port);
-        let url: string = "mongodb://localhost:27017";
+        let url: string = "mongodb+srv://timo:timo1998@gisabgabe.wskcw.mongodb.net/Nutzer?retryWrites=true&w=majority";
         let options: Mongo.MongoClientOptions;
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(url, options);
         await mongoClient.connect();
