@@ -13,7 +13,7 @@ async function registrieren() {
         "passwort": data.get("passwort")
     });
     console.log("Form data: '" + formData + "'");
-    fetch("http://localhost:8100", {
+    fetch("https://gisabgabewise2021.herokuapp.com/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -39,7 +39,7 @@ async function einloggen() {
         "passwort": data.get("passwort")
     });
     console.log("Form data: '" + formData + "'");
-    fetch("http://localhost:8100/login", {
+    fetch("https://gisabgabewise2021.herokuapp.com/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -56,7 +56,7 @@ async function einloggen() {
     console.log("Data sent.");
 }
 async function showUserlist() {
-    fetch("http://localhost:8100/Namen", {
+    fetch("https://gisabgabewise2021.herokuapp.com/Namen", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
