@@ -1,9 +1,9 @@
 async function registrieren(): Promise<void> {
     console.log("Sending form data.");
     let submitbutton: HTMLFormElement = <HTMLFormElement> document.getElementById("NutzerDaten");
-    //let form = document.querySelector("NutzerDaten");
     let data: FormData = new FormData(submitbutton);
     
+    //Daten in JSON Objekt schreiben
     let formData: string = JSON.stringify(
                             {"fname": data.get("fname") as string, 
                             "lname": data.get("lname") as string,
@@ -14,6 +14,7 @@ async function registrieren(): Promise<void> {
                             "passwort": data.get("passwort") as string
                             });
 
+    //Daten der Registrierung übermitteln
     console.log("Form data: '" + formData + "'");
     fetch("https://gisabgabewise2021.herokuapp.com/", {
         method: "POST",
@@ -23,23 +24,24 @@ async function registrieren(): Promise<void> {
         
         body: formData
     })
+    //Bestätigung wenn es geklappt hat
     .then(response => {
         console.log(response.statusText);
         document.getElementById("Message").innerHTML = response.statusText;
     })
-
+    //Error code wenn es fehlgeschlagen ist
     .catch (error => {
         console.error("Error: " + error);
+        document.getElementById("Message").innerHTML = "unbekannter Fehler";
     });
 
     
     console.log("Data sent.");
 }
-
+//Überprüfung der eingegebenen Daten mit den Daten in der Datenbank
 async function einloggen(): Promise<void> {
     console.log("sending login data");
     let submitbutton: HTMLFormElement = <HTMLFormElement> document.getElementById("login");
-    //let form = document.querySelector("NutzerDaten");
     let data: FormData = new FormData(submitbutton);
     
     let formData: string = JSON.stringify(
@@ -57,18 +59,21 @@ async function einloggen(): Promise<void> {
         
         body: formData
     })
+    //Nachricht bei erfolgreichem login
     .then(response => {
         console.log(response.statusText);
         document.getElementById("loginmeldung").innerHTML = response.statusText;
     })
+    //Error code bei Fehler
     .catch (error => {
         console.error("Error: " + error);
+        document.getElementById("loginmeldung").innerHTML = "unbekannter Fehler";
     });
 
     
     console.log("Data sent.");
 }
-
+//Ausgabe der Datenbank
 async function showUserlist(): Promise<void> {
     fetch("https://gisabgabewise2021.herokuapp.com/Namen", {
         method: "GET",
@@ -76,6 +81,7 @@ async function showUserlist(): Promise<void> {
         "Content-Type": "application/json"
         }
     })
+    //Datenbank Inhalt in Arrays speichern für übersichtlichere Ausgabe
     .then(response => {
         console.log(response.statusText);
         let namen: string = "";
@@ -89,7 +95,9 @@ async function showUserlist(): Promise<void> {
         
         
     })
+    //Meldung in der Konsole bei Fehler
     .catch (error => {
         console.error("Error: " + error);
+        console.log("fehler");
     });
 }
