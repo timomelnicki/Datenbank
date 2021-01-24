@@ -17,7 +17,7 @@ var P_3_1Server;
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(port);
-        let url = "mongodb://localhost:27017";
+        let url = "mongodb+srv://timo:timo1998@gisabgabe.wskcw.mongodb.net/Nutzer?retryWrites=true&w=majority";
         let options;
         let mongoClient = new Mongo.MongoClient(url, options);
         await mongoClient.connect();
