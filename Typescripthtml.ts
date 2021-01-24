@@ -80,7 +80,7 @@ async function showUserlist(): Promise<void> {
         console.log(response.statusText);
         let namen: string = "";
         response.json().then(js => {
-            for (let i: number = 0; i < js.length - 1; i++ ) {
+            for (let i: number = 0; i < js.length; i++ ) {
                 //namen + fname + " " + lname + NEWLINE
                 namen = namen + js[i].fname + " " + js[i].lname + "<br/>";    
             }
